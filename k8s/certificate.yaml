@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jey-app
+spec:
+  secretName: jey-app
+  issuerRef: 
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: jey.app
+  dnsNames:
+    - jey.app
+    - www.jey.app
+  acme:
+    config:
+      - http01:
+        ingressClass: nginx
+      domains:
+        - jey.app
+        - www.jey.app
